@@ -7,7 +7,7 @@ struct Reservation {
     char name[50];
     int num_customers;
     int num_days;
-    int room_type;  // 1 = VIP, 2 = Business Class, 3 = Ordinary
+    int room_type;  
     double room_rate;
     double total_cost;
 };
@@ -18,13 +18,13 @@ double get_double_input();
 void make_reservation(struct Reservation *res);
 
 int main() {
-    printf("Hello, welcome to Liebig Hotel!\n");
+    printf("Hello, welcome to Liyosi Hotel.\n");
     
     struct Reservation res;
     make_reservation(&res);
     
-    printf("Thank you for choosing Liebig Hotel!\n");
-    printf("Your total cost for %d days in a %d-person %s room is $%.2f.\n",
+    printf("Thank you for choosing Liyosi Hotel.\n");
+    printf("Your total cost for %d days in a %d-person %s room is Sh.%.2f.\n",
            res.num_days, res.num_customers, 
            (res.room_type == 1) ? "VIP" : (res.room_type == 2) ? "Business Class" : "Ordinary",
            res.total_cost);
@@ -34,9 +34,9 @@ int main() {
 
 void print_menu() {
     printf("Please select a room type:\n");
-    printf("1. VIP (max. 5 people per room) - $500/day\n");
-    printf("2. Business Class (max. 5 people per room) - $100/day\n");
-    printf("3. Ordinary (max. 5 people per room) - $50/day\n");
+    printf("1. VIP (max. 5 people per room) - Sh.1500/day\n");
+    printf("2. Business Class (max. 5 people per room) - Sh.1000/day\n");
+    printf("3. Ordinary (max. 5 people per room) - Sh.500/day\n");
 }
 
 int get_integer_input() {
@@ -63,7 +63,7 @@ void make_reservation(struct Reservation *res) {
     }
     
     print_menu();
-    printf("Please enter the room type: ");
+    printf("Please enter the room type you wish to book: ");
     res->room_type = get_integer_input();
     while (res->room_type < 1 || res->room_type > 3) {
         printf("Invalid input. Please enter 1, 2, or 3: ");
